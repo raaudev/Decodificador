@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Decodificador</title>
+  
+</head>
+<body>
+  <header class="cabecalho">
+    <h3 class="titulo">Enigma</h3>
+  </header>
+
+  <main class="container__geral">
+      <div class="container">
+        <textarea class="digite" id="inputText" rows="4" placeholder="Digite seu texto aqui"></textarea>
+        <label class="aviso" for="digite">apenas letras minúsculas e sem símbolos. </label>
+      </div>
+    
+      <div class="buttons-container">
+            <button class="btn__encrypt" onclick="encryptText()">Criptografar</button>
+            <button class="btn__decrypt" onclick="decryptText()">Descriptografar</button>
+      </div>
+      <div id="message-container"></div>
+    
+      <div class="container__copiar">
+        <textarea class="copiar" id="outputText" rows="4" readonly placeholder="Não há nada aqui ainda"></textarea>
+      </div>
+      
+      <div class="button__copy">
+         <button class="btn__copy" onclick="copyToClipboard()">Copiar</button>
+      </div>
+  </main>
+    
+  <footer class="rodape">
+      &copy; 2024
+      Rau Souza
+  </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <script src="main.js"></script>
+   <script src="displayMessage.js"></script>
+</body>
+</html>
