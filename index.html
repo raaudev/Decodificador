@@ -4,45 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="style.css">
-    <title>Decodificador</title>
-  
+    <title>Decodificador - Enigma</title>
+    <meta name="description" content="Decodificador de texto - Criptografe e descriptografe suas mensagens de forma segura">
 </head>
 <body>
-  <header class="cabecalho">
-    <h3 class="titulo">Enigma</h3>
-  </header>
+    <header class="cabecalho">
+        <h1 class="titulo">Enigma</h1>
+    </header>
 
-  <main class="container__geral">
-      <div class="container">
-        <textarea class="digite" id="inputText" rows="4" placeholder="Digite seu texto aqui"></textarea>
-        <label class="aviso" for="digite">apenas letras minúsculas e sem símbolos. </label>
-      </div>
+    <main class="container__geral">
+        <section class="container">
+            <label for="inputText" class="sr-only">Área de texto para criptografia</label>
+            <textarea 
+                class="digite" 
+                id="inputText" 
+                rows="6" 
+                placeholder="Digite seu texto aqui..."
+                aria-label="Digite o texto que deseja criptografar ou descriptografar"
+            ></textarea>
+            <p class="aviso">
+                <i class="bi bi-info-circle"></i>
+                Apenas letras minúsculas e sem símbolos
+            </p>
+        </section>
     
-      <div class="buttons-container">
-            <button class="btn__encrypt" onclick="encryptText()">Criptografar</button>
-            <button class="btn__decrypt" onclick="decryptText()">Descriptografar</button>
-      </div>
-      <div id="message-container"></div>
+        <section class="buttons-container">
+            <button class="btn__encrypt" onclick="encryptText()" aria-label="Criptografar texto">
+                <i class="bi bi-lock"></i>
+                Criptografar
+            </button>
+            <button class="btn__decrypt" onclick="decryptText()" aria-label="Descriptografar texto">
+                <i class="bi bi-unlock"></i>
+                Descriptografar
+            </button>
+        </section>
+        
+        <div id="message-container" role="status" aria-live="polite"></div>
     
-      <div class="container__copiar">
-        <textarea class="copiar" id="outputText" rows="4" readonly placeholder="Não há nada aqui ainda"></textarea>
-      </div>
-      
-      <div class="button__copy">
-         <button class="btn__copy" onclick="copyToClipboard()">Copiar</button>
-      </div>
-  </main>
+        <section class="container__copiar">
+            <label for="outputText" class="sr-only">Resultado da criptografia</label>
+            <textarea 
+                class="copiar" 
+                id="outputText" 
+                rows="6" 
+                readonly 
+                placeholder="O resultado aparecerá aqui..."
+                aria-label="Resultado da criptografia ou descriptografia"
+            ></textarea>
+        </section>
+        
+        <section class="button__copy">
+            <button class="btn__copy" onclick="copyToClipboard()" aria-label="Copiar resultado para área de transferência">
+                <i class="bi bi-clipboard"></i>
+                Copiar
+            </button>
+        </section>
+    </main>
     
-  <footer class="rodape">
-      &copy; 2024
-      Rau Souza
-  </footer>
+    <footer class="rodape">
+        <p>&copy; 2024 Rau Souza - Decodificador Enigma</p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-   <script src="main.js"></script>
-   <script src="displayMessage.js"></script>
+    <script src="main.js"></script>
+    <script src="displayMessage.js"></script>
 </body>
 </html>
+
