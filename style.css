@@ -1,127 +1,295 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
 
 :root {
-    --cor-primaria: azura;
+    --cor-primaria: #0a0a0a;
     --cor-secundaria: #00fffc;
-    --cor-terciaria: linear-gradient(
-120deg, transparent,
-#00fffc, transparent);
+    --cor-terciaria: linear-gradient(135deg, #00fffc, #0099ff, #00fffc);
     --cor-quaternaria: #000;
+    --cor-texto: #ffffff;
+    --cor-texto-secundario: #cccccc;
+    --cor-sombra: rgba(0, 255, 252, 0.3);
+    --cor-hover: rgba(0, 255, 252, 0.1);
 }
 
-*{
-  margin: 0;
-  padding: 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-  box-sizing: border-box;
-  background-color: var(--cor-primaria);
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    color: var(--cor-texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.cabecalho{
-  display: flex;
-  justify-content: space-between;
-  padding: 2% 5% 2% 10%;
-  background-color: var(--cor-secundaria);
+.cabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 5%;
+    background: linear-gradient(135deg, var(--cor-secundaria), #0099ff);
+    box-shadow: 0 4px 20px var(--cor-sombra);
+    position: relative;
+    overflow: hidden;
+}
+
+.cabecalho::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
 @keyframes AnimacaoTexto {
-  0% { color: var(--cor-quaternaria); }
-  50% { color: #fff; }
-  100% { color: var(--cor-quaternaria); }
+    0% { color: var(--cor-quaternaria); text-shadow: 0 0 10px transparent; }
+    50% { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+    100% { color: var(--cor-quaternaria); text-shadow: 0 0 10px transparent; }
 }
 
 .cabecalho .titulo {
-  font-family: 'Krona One', sans-serif;
-  animation: AnimacaoTexto 3s infinite;
+    font-family: 'Krona One', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    animation: AnimacaoTexto 3s infinite;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.container__geral{
-  padding-top: 25%;
-  padding-bottom: 25%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;  
+.container__geral {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-.container, .container__copiar{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container, .container__copiar {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
-.aviso{
- margin: 12px;
- font-size: 12px;
- font-family: 'Montserrat', sans-serif;
- color: var(--cor-quaternaria);
+.aviso {
+    font-size: 0.875rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-texto-secundario);
+    text-align: center;
+    font-style: italic;
+    opacity: 0.8;
 }
 
-.digite, .copiar{
-  margin: 20px;
-  width: 150%;
-  height: 140px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+.digite, .copiar {
+    width: 100%;
+    min-height: 150px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--cor-texto);
+    padding: 1.5rem;
+    border-radius: 15px;
+    resize: vertical;
+    border: 2px solid transparent;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    line-height: 1.6;
 }
 
-textarea.digite, textarea.copiar{
-  background-color: transparent;
-  width: 50%;
-  padding: 15px;
-  border-radius: 10px;
-  resize: none;
-  border: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  outline: none;
+.digite:focus, .copiar:focus {
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 8px 32px var(--cor-sombra);
+    background: rgba(255, 255, 255, 0.08);
 }
 
-button{
-  font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
-  transition: transform 0.3s ease; 
+.digite::placeholder, .copiar::placeholder {
+    color: var(--cor-texto-secundario);
+    opacity: 0.7;
 }
 
-.buttons-container, .button__copy{
-  gap: 15px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Montserrat' sans-serif;
+button {
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
 }
 
-.btn__encrypt, .btn__decrypt, .btn__copy{
-  width: 170px;
-  height: 30px;
-  background: var(--cor-terciaria);
-  border-radius: 5px;
-  border: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+.buttons-container, .button__copy {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.btn__encrypt, .btn__decrypt, .btn__copy {
+    min-width: 180px;
+    height: 50px;
+    background: var(--cor-terciaria);
+    border-radius: 25px;
+    color: var(--cor-quaternaria);
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 255, 252, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn__encrypt::before, .btn__decrypt::before, .btn__copy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 button:hover {
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 255, 252, 0.4);
 }
 
-#message-container{
-  display: flex;
-  flex-direction: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 12px;
-  font-family: 'Montserrat', sans-serif;
+button:hover::before {
+    left: 100%;
 }
 
-.rodape{
-  padding: 10px;
-  background-color: var(--cor-secundaria);
-  text-align: center; 
-  font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  align-items: flex-end;
+button:active {
+    transform: translateY(-1px);
 }
+
+#message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.875rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-texto-secundario);
+    min-height: 2rem;
+    padding: 0.5rem;
+}
+
+.rodape {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--cor-secundaria), #0099ff);
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: var(--cor-quaternaria);
+    box-shadow: 0 -4px 20px var(--cor-sombra);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cabecalho .titulo {
+        font-size: 2rem;
+    }
+    
+    .container__geral {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+    
+    .buttons-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn__encrypt, .btn__decrypt, .btn__copy {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .digite, .copiar {
+        min-height: 120px;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabecalho {
+        padding: 1.5rem 3%;
+    }
+    
+    .cabecalho .titulo {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .container__geral {
+        padding: 1.5rem 1rem;
+    }
+    
+    .digite, .copiar {
+        min-height: 100px;
+        font-size: 0.9rem;
+    }
+    
+    .btn__encrypt, .btn__decrypt, .btn__copy {
+        height: 45px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animações adicionais */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container, .container__copiar, .buttons-container, .button__copy {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Efeito de foco melhorado */
+.digite:focus, .copiar:focus {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 8px 32px var(--cor-sombra);
+    }
+    50% {
+        box-shadow: 0 8px 32px rgba(0, 255, 252, 0.5);
+    }
+    100% {
+        box-shadow: 0 8px 32px var(--cor-sombra);
+    }
+}
+
